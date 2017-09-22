@@ -8,20 +8,37 @@
 
 /* Begin PBXBuildFile section */
 		7456A35E1F755C1C000B7DD8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7456A35D1F755C1C000B7DD8 /* AppDelegate.swift */; };
-		7456A3601F755C1C000B7DD8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7456A35F1F755C1C000B7DD8 /* ViewController.swift */; };
 		7456A3631F755C1C000B7DD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7456A3611F755C1C000B7DD8 /* Main.storyboard */; };
 		7456A3651F755C1C000B7DD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7456A3641F755C1C000B7DD8 /* Assets.xcassets */; };
 		7456A3681F755C1C000B7DD8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7456A3661F755C1C000B7DD8 /* LaunchScreen.storyboard */; };
+		7456A3701F755C94000B7DD8 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7456A36F1F755C94000B7DD8 /* Twitter.framework */; };
+		7456A3711F755C94000B7DD8 /* Twitter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7456A36F1F755C94000B7DD8 /* Twitter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7456A3791F755DB5000B7DD8 /* TweetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7456A3781F755DB5000B7DD8 /* TweetTableViewController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7456A3721F755C94000B7DD8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7456A3711F755C94000B7DD8 /* Twitter.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7456A35A1F755C1C000B7DD8 /* Smashtag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Smashtag.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7456A35D1F755C1C000B7DD8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7456A35F1F755C1C000B7DD8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7456A3621F755C1C000B7DD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7456A3641F755C1C000B7DD8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7456A3671F755C1C000B7DD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7456A3691F755C1C000B7DD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7456A36F1F755C94000B7DD8 /* Twitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Twitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7456A3781F755DB5000B7DD8 /* TweetTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7456A3701F755C94000B7DD8 /* Twitter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +56,7 @@
 		7456A3511F755C1C000B7DD8 = {
 			isa = PBXGroup;
 			children = (
+				7456A36F1F755C94000B7DD8 /* Twitter.framework */,
 				7456A35C1F755C1C000B7DD8 /* Smashtag */,
 				7456A35B1F755C1C000B7DD8 /* Products */,
 			);
@@ -54,14 +73,22 @@
 		7456A35C1F755C1C000B7DD8 /* Smashtag */ = {
 			isa = PBXGroup;
 			children = (
-				7456A35D1F755C1C000B7DD8 /* AppDelegate.swift */,
-				7456A35F1F755C1C000B7DD8 /* ViewController.swift */,
+				7456A3781F755DB5000B7DD8 /* TweetTableViewController.swift */,
+				7456A3731F755CA8000B7DD8 /* Sup */,
 				7456A3611F755C1C000B7DD8 /* Main.storyboard */,
-				7456A3641F755C1C000B7DD8 /* Assets.xcassets */,
-				7456A3661F755C1C000B7DD8 /* LaunchScreen.storyboard */,
 				7456A3691F755C1C000B7DD8 /* Info.plist */,
 			);
 			path = Smashtag;
+			sourceTree = "<group>";
+		};
+		7456A3731F755CA8000B7DD8 /* Sup */ = {
+			isa = PBXGroup;
+			children = (
+				7456A35D1F755C1C000B7DD8 /* AppDelegate.swift */,
+				7456A3641F755C1C000B7DD8 /* Assets.xcassets */,
+				7456A3661F755C1C000B7DD8 /* LaunchScreen.storyboard */,
+			);
+			path = Sup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,6 +101,7 @@
 				7456A3561F755C1C000B7DD8 /* Sources */,
 				7456A3571F755C1C000B7DD8 /* Frameworks */,
 				7456A3581F755C1C000B7DD8 /* Resources */,
+				7456A3721F755C94000B7DD8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -136,7 +164,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7456A3601F755C1C000B7DD8 /* ViewController.swift in Sources */,
+				7456A3791F755DB5000B7DD8 /* TweetTableViewController.swift in Sources */,
 				7456A35E1F755C1C000B7DD8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,6 +245,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -266,6 +295,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -280,7 +310,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = n.Smashtag;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -295,7 +325,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = n.Smashtag;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
