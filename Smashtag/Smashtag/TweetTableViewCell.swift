@@ -19,7 +19,8 @@ class TweetTableViewCell: UITableViewCell
     var tweet: Twitter.Tweet? { didSet { updateUI() } }
     
     private func updateUI() {
-        tweetTextLabel?.text = tweet?.text
+//        tweetTextLabel?.text = tweet?.text
+        tweetTextLabel?.attributedText = setTextLabel(tweet)
         tweetUserLabel?.text = tweet?.user.description
         
         if let profileImageURL = tweet?.user.profileImageURL {
@@ -45,4 +46,36 @@ class TweetTableViewCell: UITableViewCell
         }
     }
     
+    private func setTextLabel(_ tweet: Tweet?) -> NSMutableAttributedString {
+        guard let tweet = tweet else { return NSMutableAttributedString(string: "")}
+        
+        let attributedText = NSMutableAttributedString(string: tweet.text as String)
+        
+        attributedText.setMensionsColor(tweet.hashtags, color: UIColor.gray)
+        attributedText.setMensionsColor(tweet.urls, color: UIColor.blue)
+        attributedText.setMensionsColor(tweet.userMentions, color: UIColor.purple)
+        
+        return attributedText
+    }
+    
 }
+
+private extension NSMutableAttributedString {
+    func setMensionsColor(_ mensions: [Mention], color: UIColor) {
+        for mension in mensions {
+            addAttribute(NSForegroundColorAttributeName, value: color, range: mension.nsrange)
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+

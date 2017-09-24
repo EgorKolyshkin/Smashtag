@@ -108,10 +108,6 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate
 //        cell.textLabel?.text = tweet.text
 //        cell.detailTextLabel?.text = tweet.user.name
         
-        // our outlets to our custom UI
-        // are connected to this custom UITableViewCell-subclassed cell
-        // so we need to tell it which tweet is shown in its row
-        // and it can load up its UI through its outlets
         if let tweetCell = cell as? TweetTableViewCell {
             tweetCell.tweet = tweet
         }
@@ -121,8 +117,6 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate
     
     override func tableView(_ tableView: UITableView,
                             titleForHeaderInSection section: Int) -> String? {
-        // делает более понятным, что происходит при каждом "вытягивании"
-        // твитов из Twitter, если появляются Заголовки Секций
         return "\(tweets.count-section)"
     }
 }
