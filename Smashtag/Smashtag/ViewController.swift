@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  Smashtag
 //
-//  Created by Егор on 22.09.17.
-//  Copyright © 2017 Егор. All rights reserved.
+//  Created by CS193p Instructor on 2/8/17.
+//  Copyright © 2017 Stanford University. All rights reserved.
 //
 
 import UIKit
