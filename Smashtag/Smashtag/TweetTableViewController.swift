@@ -9,33 +9,17 @@
 import UIKit
 import Twitter
 
-// this entire project will not work
-// unless you make a Workspace that includes
-// both this application
-// and the Twitter project
-// and you drag the Product of the Twitter framework build
-// into the Embedded Binaries section
-// of the Project Settings of this application
-
 class TweetTableViewController: UITableViewController, UITextFieldDelegate
 {
     // MARK: Model
 
-    // part of our Model
-    // each sub-Array of Tweets is another "pull" from Twitter
-    // and corresponds to a section in our table
     private var tweets = [Array<Twitter.Tweet>]()
-    
-    // public part of our Model
-    // when this is set
-    // we'll reset our tweets Array
-    // to reflect the result of fetching Tweets that match
     
     var searchText: String? {
         didSet {
             searchTextField?.text = searchText
             searchTextField?.resignFirstResponder()
-            lastTwitterRequest = nil                // REFRESHING
+            lastTwitterRequest = nil
             tweets.removeAll()
             tableView.reloadData()
             searchForTweets()
@@ -45,8 +29,6 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate
     
     // MARK: Updating the Table
     
-    // just creates a Twitter.Request
-    // that finds tweets that match our searchText
     private func twitterRequest() -> Twitter.Request? {
         if let query = searchText, !query.isEmpty {
             return Twitter.Request(search: "\(query) -filter:safe -filter:retweets",
@@ -55,43 +37,30 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate
         return nil
     }
     
-    // we track this so that
-    // a) we ignore tweets that come back from other than our last request
-    // b) when we want to refresh, we only get tweets newer than our last request
     private var lastTwitterRequest: Twitter.Request?
 
-    // takes the searchText part of our Model
-    // and fires off a fetch for matching Tweets
-    // when they come back (if they're still relevant)
-    // we update our tweets array
-    // and then let the table view know that we added a section
-    // (it will then call our UITableViewDataSource to get what it needs)
-    
     private func searchForTweets() {
-        // "lastTwitterRequest?.newer ??" was added after lecture for REFRESHING
         if let request = lastTwitterRequest?.newer ?? twitterRequest() {
             lastTwitterRequest = request
-            request.fetchTweets { [weak self] newTweets in      // this is off the main queue
-                DispatchQueue.main.async {                      // so we must dispatch back to main queue
+            request.fetchTweets { [weak self] newTweets in
+                DispatchQueue.main.async {
                     if request == self?.lastTwitterRequest {
                         self?.tweets.insert(newTweets, at:0)
                         self?.tableView.insertSections([0], with: .fade)
                     }
-                    self?.refreshControl?.endRefreshing()   // REFRESHING
+                    self?.refreshControl?.endRefreshing()
                 }
             }
         } else {
-            self.refreshControl?.endRefreshing()            // REFRESHING
+            self.refreshControl?.endRefreshing()
         }
     }
     
-    // Added after lecture for REFRESHING
+
     @IBAction func refresh(_ sender: UIRefreshControl) {
         searchForTweets()
     }
     
-    // MARK: View Controller Lifecycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // we use the row height in the storyboard as an "estimate"
@@ -104,16 +73,12 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate
     
     // MARK: Search Text Field
 
-    // set ourself to be the UITextFieldDelegate
-    // so that we can get textFieldShouldReturn sent to us
     @IBOutlet weak var searchTextField: UITextField! {
         didSet {
             searchTextField.delegate = self
         }
     }
     
-    // when the return (i.e. Search) button is pressed in the keyboard
-    // we go off to search for the text in the searchTextField
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == searchTextField {
             searchText = searchTextField.text
@@ -154,7 +119,6 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate
         return cell
     }
     
-    // Added after lecture for REFRESHING
     override func tableView(_ tableView: UITableView,
                             titleForHeaderInSection section: Int) -> String? {
         // делает более понятным, что происходит при каждом "вытягивании"
