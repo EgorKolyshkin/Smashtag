@@ -19,7 +19,6 @@ class TweetTableViewCell: UITableViewCell
     var tweet: Twitter.Tweet? { didSet { updateUI() } }
     
     private func updateUI() {
-//        tweetTextLabel?.text = tweet?.text
         tweetTextLabel?.attributedText = setTextLabel(tweet)
         tweetUserLabel?.text = tweet?.user.description
         

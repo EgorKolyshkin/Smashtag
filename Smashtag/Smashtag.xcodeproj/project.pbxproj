@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		74C7ED9E1F7955DE002CBDB5 /* MensionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C7ED9D1F7955DE002CBDB5 /* MensionsTableViewController.swift */; };
+		74C7EDC01F799E14002CBDB5 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C7EDBF1F799E14002CBDB5 /* ImageTableViewCell.swift */; };
 		E42274FF1EB9DD04003B7B38 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E42274FE1EB9DD04003B7B38 /* Twitter.framework */; };
 		E42275001EB9DD04003B7B38 /* Twitter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E42274FE1EB9DD04003B7B38 /* Twitter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EC7D5EBF1E4BF94B009A2E85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7D5EBE1E4BF94B009A2E85 /* AppDelegate.swift */; };
@@ -32,6 +34,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		74C7ED9D1F7955DE002CBDB5 /* MensionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MensionsTableViewController.swift; sourceTree = "<group>"; };
+		74C7EDBF1F799E14002CBDB5 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
 		E42274FE1EB9DD04003B7B38 /* Twitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Twitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC7D5EBB1E4BF94B009A2E85 /* Smashtag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Smashtag.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC7D5EBE1E4BF94B009A2E85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +81,8 @@
 			children = (
 				EC7D5ED11E4BF992009A2E85 /* TweetTableViewController.swift */,
 				EC7D5EC21E4BF94B009A2E85 /* Main.storyboard */,
+				74C7ED9D1F7955DE002CBDB5 /* MensionsTableViewController.swift */,
+				74C7EDBF1F799E14002CBDB5 /* ImageTableViewCell.swift */,
 				EC7D5ED71E4C0239009A2E85 /* TweetTableViewCell.swift */,
 				EC7D5ECA1E4BF94B009A2E85 /* Info.plist */,
 				EC7D5ED01E4BF956009A2E85 /* Sup */,
@@ -169,6 +175,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC7D5EBF1E4BF94B009A2E85 /* AppDelegate.swift in Sources */,
+				74C7ED9E1F7955DE002CBDB5 /* MensionsTableViewController.swift in Sources */,
+				74C7EDC01F799E14002CBDB5 /* ImageTableViewCell.swift in Sources */,
 				EC7D5ED21E4BF992009A2E85 /* TweetTableViewController.swift in Sources */,
 				EC7D5ED81E4C0239009A2E85 /* TweetTableViewCell.swift in Sources */,
 			);
