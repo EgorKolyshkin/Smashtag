@@ -59,6 +59,10 @@ class MensionsTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return mensionSection[section].mension.count
     }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+       return mensionSection[section].type
+    }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
