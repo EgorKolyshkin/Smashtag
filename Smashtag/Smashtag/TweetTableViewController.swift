@@ -119,4 +119,12 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate
                             titleForHeaderInSection section: Int) -> String? {
         return "\(tweets.count-section)"
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination
+        if let mensionsTableViewController = destination as? MensionsTableViewController,
+            let tweetCell = sender as? TweetTableViewCell {
+            mensionsTableViewController.tweet = tweetCell.tweet
+        }
+    }
 }

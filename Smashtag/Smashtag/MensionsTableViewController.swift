@@ -11,7 +11,14 @@ import Twitter
 
 class MensionsTableViewController: UITableViewController {
 
-    var tweet: Tweet?
+    var tweet: Tweet? {
+        didSet {
+            guard let tweet = tweet else { return }
+            title = tweet.user.screenName
+            mensionSection = setMensionSections(with: tweet)
+            tableView.reloadData()
+        }
+    }
     var image: UIImage?
     
     private var mensionSection: [MensionsSection] = []
