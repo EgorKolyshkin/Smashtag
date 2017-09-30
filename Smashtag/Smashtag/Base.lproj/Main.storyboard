@@ -123,7 +123,7 @@
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ImageViewCell" rowHeight="293" id="twi-EF-GLe" customClass="ImageTableViewCell" customModule="Smashtag" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="293"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="twi-EF-GLe" id="5po-DS-YLd">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="twi-EF-GLe" id="5po-DS-YLd" customClass="ImageTableViewCell" customModule="Smashtag" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="292.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -139,7 +139,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="imageD" destination="zcp-nS-tV2" id="3pY-jK-KIV"/>
+                                    <outlet property="TweetImage" destination="zcp-nS-tV2" id="OX2-MW-ssC"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MensionCell" rowHeight="46" id="bWU-rg-A6C">

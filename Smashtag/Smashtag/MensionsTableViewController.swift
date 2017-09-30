@@ -19,7 +19,8 @@ class MensionsTableViewController: UITableViewController {
             tableView.reloadData()
         }
     }
-    var image: UIImage?
+    
+    private var image: UIImage?
     
     private var mensionSection: [MensionsSection] = []
     
@@ -30,11 +31,14 @@ class MensionsTableViewController: UITableViewController {
     
     private enum MentionItem {
         case keyword(String)
-        case image(UIImage)
+        case image(URL, Double)
     }
     
     private func setMensionSections(with tweet: Tweet) -> [MensionsSection] {
         var mentionSection = [MensionsSection]()
+        if tweet.media.count > 0 {
+            mentionSection.append(MensionsSection(type: "image", mension: tweet.media.map{MentionItem.image($0.url, $0.aspectRatio)}))
+        }
         if tweet.hashtags.count > 0 {
             mentionSection.append(MensionsSection(type: "hashtag", mension: tweet.hashtags.map { MentionItem.keyword($0.keyword)}))
         }
@@ -64,7 +68,15 @@ class MensionsTableViewController: UITableViewController {
        return mensionSection[section].type
     }
 
-    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let mension = mensionSection[indexPath.section].mension[indexPath.row]
+        switch mension {
+        case .image(_, let ratio):
+            return tableView.bounds.size.width / CGFloat(ratio)
+        default:
+            return UITableViewAutomaticDimension
+        }
+    }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let mension = mensionSection[indexPath.section].mension[indexPath.row]
         
@@ -73,13 +85,16 @@ class MensionsTableViewController: UITableViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "MensionCell", for: indexPath)
                 cell.textLabel?.text = keyword
                 return cell
-        case .image(let image):
+        case .image(let url, _):
             let cell = tableView.dequeueReusableCell(withIdentifier: "ImageViewCell", for: indexPath)
-            cell.imageView?.image = image
+            if let imageCell = cell as? ImageTableViewCell {
+                imageCell.URL = url
+            }
             return cell
         }
-//        return cell
     }
+ 
+
  
 
     /*

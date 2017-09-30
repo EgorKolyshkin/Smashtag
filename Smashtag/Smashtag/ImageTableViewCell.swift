@@ -10,7 +10,28 @@ import UIKit
 
 class ImageTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var imageD: UIImageView!
+    @IBOutlet weak var TweetImage: UIImageView!
+    
+    var URL: URL? {
+        didSet {
+            updateUI()
+        }
+    }
+    
+    private func updateUI() {
+        if let imageURl = URL {
+            DispatchQueue.global(qos: .userInitiated).async {
+                let contentOfUrl = try? Data(contentsOf: imageURl)
+                DispatchQueue.main.async {
+                    if imageURl == self.URL {
+                        if let data = contentOfUrl {
+                            self.TweetImage.image = UIImage(data: data)
+                        }
+                    }
+                }
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
