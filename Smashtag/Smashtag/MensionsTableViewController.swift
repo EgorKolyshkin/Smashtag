@@ -96,18 +96,8 @@ class MensionsTableViewController: UITableViewController {
     }
     
     
-    /*
-     Доделать
-     зачем-то ищет url
-     */
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var destinationViewController = segue.destination
-        if let navigationController = destinationViewController as? UINavigationController {
-            destinationViewController = navigationController.visibleViewController ?? destinationViewController
-        }
-        if let tweetTableViewController = destinationViewController as? TweetTableViewController,
-            let cell = sender as? UITableViewCell,
-            let _ = segue.identifier,
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if let cell = sender as? UITableViewCell,
             let indexPath = tableView.indexPath(for: cell){
             if mensionSection[indexPath.section].type == "urls" {
                 if let urlString = cell.textLabel?.text, let url = URL(string: urlString) {
@@ -116,13 +106,23 @@ class MensionsTableViewController: UITableViewController {
                     } else {
                         UIApplication.shared.openURL(url)
                     }
+                    return false
                 }
-            } else {
-                tweetTableViewController.searchText = (sender as? UITableViewCell)?.textLabel?.text
             }
         }
+        return true
     }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var destinationViewController = segue.destination
+        if let navigationController = destinationViewController as? UINavigationController {
+            destinationViewController = navigationController.visibleViewController ?? destinationViewController
+        }
+        if let tweetTableViewController = destinationViewController as? TweetTableViewController {
+            tweetTableViewController.searchText = (sender as? UITableViewCell)?.textLabel?.text
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
