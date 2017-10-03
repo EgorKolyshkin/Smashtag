@@ -189,17 +189,25 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="23C-6C-OYK">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Xg-Lm-zhb">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="9Xg-Lm-zhb" firstAttribute="top" secondItem="LqW-x1-vSP" secondAttribute="bottom" constant="-20" id="5qe-2W-Xbq"/>
                             <constraint firstItem="f1C-Vn-dbb" firstAttribute="top" secondItem="23C-6C-OYK" secondAttribute="bottom" id="9XQ-FU-d6l"/>
+                            <constraint firstAttribute="trailing" secondItem="9Xg-Lm-zhb" secondAttribute="trailing" id="Mp5-5K-5Gb"/>
                             <constraint firstAttribute="trailing" secondItem="23C-6C-OYK" secondAttribute="trailing" id="Ook-Ox-dM3"/>
                             <constraint firstItem="23C-6C-OYK" firstAttribute="leading" secondItem="DH9-Y0-ygg" secondAttribute="leading" id="ggT-dA-szK"/>
+                            <constraint firstItem="9Xg-Lm-zhb" firstAttribute="leading" secondItem="DH9-Y0-ygg" secondAttribute="leading" id="hqD-UH-uEP"/>
                             <constraint firstItem="23C-6C-OYK" firstAttribute="top" secondItem="LqW-x1-vSP" secondAttribute="bottom" constant="-20" id="ifK-5K-Wgm"/>
+                            <constraint firstItem="f1C-Vn-dbb" firstAttribute="top" secondItem="9Xg-Lm-zhb" secondAttribute="bottom" id="wQb-W9-dpJ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="detailImage" destination="23C-6C-OYK" id="OaR-2y-euF"/>
+                        <outlet property="scrollView" destination="9Xg-Lm-zhb" id="RbO-nL-Pow"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wHQ-r7-ENI" userLabel="First Responder" sceneMemberID="firstResponder"/>

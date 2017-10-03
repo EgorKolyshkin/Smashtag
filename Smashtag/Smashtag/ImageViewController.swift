@@ -19,6 +19,16 @@ class ImageViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var scrollView: UIScrollView! {
+        didSet {
+            scrollView.delegate = self
+            scrollView.minimumZoomScale = 0.03
+            scrollView.maximumZoomScale = 1.0
+            scrollView.contentSize = detailImage.frame.size
+            scrollView.addSubview(detailImage)
+        }
+    }
+    
     private func updateUI() {
         if let imageURl = URL {
             DispatchQueue.global(qos: .userInitiated).async {
@@ -34,6 +44,8 @@ class ImageViewController: UIViewController {
         }
     }
     
+    fileprivate var imageView = UIImageView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,4 +57,11 @@ class ImageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+}
+
+extension ImageViewController : UIScrollViewDelegate
+{
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return detailImage
+    }
 }
