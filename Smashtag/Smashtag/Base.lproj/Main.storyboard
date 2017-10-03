@@ -140,6 +140,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="TweetImage" destination="zcp-nS-tV2" id="OX2-MW-ssC"/>
+                                    <segue destination="bas-Ot-jmN" kind="show" identifier="ShowDetailImage" id="vGU-Zh-Vus"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MensionCell" textLabel="Jiy-3N-oga" rowHeight="46" style="IBUITableViewCellStyleDefault" id="bWU-rg-A6C">
@@ -172,6 +173,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SV6-0N-jxE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="353" y="-177"/>
+        </scene>
+        <!--Image View Controller-->
+        <scene sceneID="TWa-gI-B8S">
+            <objects>
+                <viewController id="bas-Ot-jmN" customClass="ImageViewController" customModule="Smashtag" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LqW-x1-vSP"/>
+                        <viewControllerLayoutGuide type="bottom" id="f1C-Vn-dbb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DH9-Y0-ygg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="23C-6C-OYK">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="f1C-Vn-dbb" firstAttribute="top" secondItem="23C-6C-OYK" secondAttribute="bottom" id="9XQ-FU-d6l"/>
+                            <constraint firstAttribute="trailing" secondItem="23C-6C-OYK" secondAttribute="trailing" id="Ook-Ox-dM3"/>
+                            <constraint firstItem="23C-6C-OYK" firstAttribute="leading" secondItem="DH9-Y0-ygg" secondAttribute="leading" id="ggT-dA-szK"/>
+                            <constraint firstItem="23C-6C-OYK" firstAttribute="top" secondItem="LqW-x1-vSP" secondAttribute="bottom" constant="-20" id="ifK-5K-Wgm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="detailImage" destination="23C-6C-OYK" id="OaR-2y-euF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wHQ-r7-ENI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1125.5999999999999" y="-177.66116941529236"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eeI-3b-0O6">
