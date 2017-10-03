@@ -72,11 +72,12 @@ class MensionsTableViewController: UITableViewController {
         let mension = mensionSection[indexPath.section].mension[indexPath.row]
         switch mension {
         case .image(_, let ratio):
-            return tableView.bounds.size.height / CGFloat(ratio)
+            return tableView.bounds.size.width / CGFloat(ratio)
         default:
             return UITableViewAutomaticDimension
         }
     }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let mension = mensionSection[indexPath.section].mension[indexPath.row]
         
@@ -95,18 +96,30 @@ class MensionsTableViewController: UITableViewController {
     }
     
     
-     /*
-         Доделать
-         зачем-то ищет url 
-      */
+    /*
+     Доделать
+     зачем-то ищет url
+     */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         var destinationViewController = segue.destination
         if let navigationController = destinationViewController as? UINavigationController {
             destinationViewController = navigationController.visibleViewController ?? destinationViewController
         }
         if let tweetTableViewController = destinationViewController as? TweetTableViewController,
-            let _ = segue.identifier {
-            tweetTableViewController.searchText = (sender as? UITableViewCell)?.textLabel?.text
+            let cell = sender as? UITableViewCell,
+            let _ = segue.identifier,
+            let indexPath = tableView.indexPath(for: cell){
+            if mensionSection[indexPath.section].type == "urls" {
+                if let urlString = cell.textLabel?.text, let url = URL(string: urlString) {
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(url)
+                    }
+                }
+            } else {
+                tweetTableViewController.searchText = (sender as? UITableViewCell)?.textLabel?.text
+            }
         }
     }
     
