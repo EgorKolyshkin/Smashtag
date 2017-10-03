@@ -149,6 +149,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="45.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="qGf-I8-8L8" kind="show" identifier="SearchForMension" id="DqB-iA-PG6"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -159,7 +162,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SV6-0N-jxE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="484" y="-177.66116941529236"/>
+            <point key="canvasLocation" x="353" y="-177"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eeI-3b-0O6">
@@ -180,4 +183,7 @@
             <point key="canvasLocation" x="-1386.4000000000001" y="-175.86206896551727"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="DqB-iA-PG6"/>
+    </inferredMetricsTieBreakers>
 </document>

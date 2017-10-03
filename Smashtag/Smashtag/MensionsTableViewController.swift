@@ -72,7 +72,7 @@ class MensionsTableViewController: UITableViewController {
         let mension = mensionSection[indexPath.section].mension[indexPath.row]
         switch mension {
         case .image(_, let ratio):
-            return tableView.bounds.size.width / CGFloat(ratio)
+            return tableView.bounds.size.height / CGFloat(ratio)
         default:
             return UITableViewAutomaticDimension
         }
@@ -93,9 +93,23 @@ class MensionsTableViewController: UITableViewController {
             return cell
         }
     }
- 
-
- 
+    
+    
+     /*
+         Доделать
+         зачем-то ищет url 
+      */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var destinationViewController = segue.destination
+        if let navigationController = destinationViewController as? UINavigationController {
+            destinationViewController = navigationController.visibleViewController ?? destinationViewController
+        }
+        if let tweetTableViewController = destinationViewController as? TweetTableViewController,
+            let _ = segue.identifier {
+            tweetTableViewController.searchText = (sender as? UITableViewCell)?.textLabel?.text
+        }
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.
