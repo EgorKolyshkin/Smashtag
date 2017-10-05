@@ -142,7 +142,7 @@ class MensionsTableViewController: UITableViewController {
                 if let imageViewController = destinationViewController as? ImageViewController {
                     let mension = mensionSection[indexPath.section].mension[indexPath.row]
                     switch mension {
-                    case .image(let url, _): imageViewController.URL = url
+                    case .image(let url, _): imageViewController.imageURL = url
                     default: break
                     }
                 }
