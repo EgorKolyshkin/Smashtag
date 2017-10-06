@@ -22,7 +22,7 @@ class TweetsModel {
         if !searches.contains(search)  {
             searches.insert(search, at: 0)
             if searches.count > limit {
-                search.remove(at: limit)
+                searches.remove(at: limit)
             }
         }
     }
