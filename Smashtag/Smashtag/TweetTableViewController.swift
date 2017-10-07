@@ -15,6 +15,8 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate
 
     private var tweets = [Array<Twitter.Tweet>]()
     
+    private let tweetsModel = TweetsModel()
+    
     var searchText: String? {
         didSet {
             searchTextField?.text = searchText
@@ -24,6 +26,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate
             tableView.reloadData()
             searchForTweets()
             title = searchText
+            tweetsModel.add(searchText!)
         }
     }
     
