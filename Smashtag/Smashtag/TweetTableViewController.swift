@@ -27,6 +27,9 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate
             searchForTweets()
             title = searchText
             tweetsModel.add(searchText!)
+            if let search = searchText {
+                tweetsModel.add(search)
+            }
         }
     }
     

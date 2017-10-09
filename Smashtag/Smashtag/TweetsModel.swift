@@ -10,20 +10,22 @@ import Foundation
 
 class TweetsModel {
     
+    private let defaults = UserDefaults.standard
+    private let key = "RecentSearches"
     private let limit = 100
     
-    private var searches: [String] = ["1","2","3"]
+    var searches: [String]{
+        return (defaults.object(forKey: key) as? [String]) ?? []
+    }
     
     func add(_ search: String){
-        if !searches.contains(search)  {
-            searches.insert(search, at: 0)
-            if searches.count > limit {
-                searches.remove(at: limit)
-            }
+        guard !search.isEmpty else { return }
+        var newArray = searches.filter { search.caseInsensitiveCompare($0) != .orderedSame}
+        newArray.insert(search, at: 0)
+        while newArray.count > limit {
+            newArray.removeLast()
         }
+        defaults.set(newArray, forKey: key)
     }
     
-    func searchesForTable() -> [String] {
-        return self.searches
-    }
 }

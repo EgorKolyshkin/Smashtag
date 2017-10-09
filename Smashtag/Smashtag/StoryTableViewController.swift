@@ -11,22 +11,27 @@ import UIKit
 class StoryTableViewController: UITableViewController {
 
     
-    private let tweetsModel = TweetsModel()
+    let tweetsModel = TweetsModel()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    var recentSearches: [String] {
+        return tweetsModel.searches
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        tableView.reloadData()
     }
 
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return tweetsModel.searchesForTable().count
+        return recentSearches.count
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "StorySearch", for: indexPath)
-        cell.textLabel?.text = tweetsModel.searchesForTable()[indexPath.row]
+        cell.textLabel?.text = tweetsModel.searches[indexPath.row]
         return cell
     }
 
