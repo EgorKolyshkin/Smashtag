@@ -9,12 +9,10 @@
 import UIKit
 
 class StoryTableViewController: UITableViewController {
-
     
-    let tweetsModel = TweetsModel()
     
     var recentSearches: [String] {
-        return tweetsModel.searches
+        return TweetsModel.searches
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,8 +29,34 @@ class StoryTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "StorySearch", for: indexPath)
-        cell.textLabel?.text = tweetsModel.searches[indexPath.row]
+        cell.textLabel?.text = TweetsModel.searches[indexPath.row]
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var destinationViewController = segue.destination
+        if let navigationController = destinationViewController as? UINavigationController {
+            destinationViewController = navigationController.visibleViewController ?? destinationViewController
+        }
+        if let tweetTableViewController = destinationViewController as? TweetTableViewController {
+            tweetTableViewController.searchText = (sender as? UITableViewCell)?.textLabel?.text
+        }
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
